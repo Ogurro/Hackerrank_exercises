@@ -7,8 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 
 @RunWith(Parameterized.class)
 public class ValleysAndMountainsTest {
