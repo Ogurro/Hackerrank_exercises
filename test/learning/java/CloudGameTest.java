@@ -31,7 +31,7 @@ public class CloudGameTest {
     }
 
     @Test
-    public void countingValleysTest() {
+    public void jumpingOnCloudsTest() {
         assertEquals(expectedResult, CloudGame.jumpingOnClouds(c));
     }
 
