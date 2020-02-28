@@ -5,6 +5,8 @@ import java.util.*;
 
 public class QHeap1 {
 
+    private static Integer currentMinValue = null;
+
     public static void runMe(String fileLocation) throws IOException {
 
         File inputFile = new File(fileLocation);
@@ -57,9 +59,13 @@ public class QHeap1 {
             if (this.value == null) {
                 this.value = value;
                 this.isActive = true;
+                currentMinValue = value;
             } else if (value < this.value) {
                 if (this.leftNode == null) {
                     this.leftNode = new MyTree(value);
+                    if (currentMinValue != null) {
+                        currentMinValue = Math.min(currentMinValue, value);
+                    }
                 } else {
                     this.leftNode.addNode(value);
                 }
@@ -80,24 +86,33 @@ public class QHeap1 {
             } else if (value > this.value) {
                 this.rightNode.removeNode(value);
             } else {
+                if (currentMinValue != null && currentMinValue.equals(this.value)) {
+                    currentMinValue = null;
+                }
                 this.isActive = false;
             }
         }
 
         public boolean printMin(BufferedWriter outputFile) throws IOException {
-            boolean cont = true;
-            if (this.leftNode != null) {
-                cont = this.leftNode.printMin(outputFile);
-            }
-            if (this.isActive && cont) {
-                outputFile.write(this.value.toString());
+            if (currentMinValue == null) {
+                boolean cont = true;
+                if (this.leftNode != null) {
+                    cont = this.leftNode.printMin(outputFile);
+                }
+                if (this.isActive && cont) {
+                    outputFile.write(this.value.toString());
+                    outputFile.newLine();
+                    return false;
+                }
+                if (this.rightNode != null && cont) {
+                    cont = this.rightNode.printMin(outputFile);
+                }
+                return cont;
+            } else {
+                outputFile.write(currentMinValue.toString());
                 outputFile.newLine();
                 return false;
             }
-            if (this.rightNode != null && cont) {
-                cont = this.rightNode.printMin(outputFile);
-            }
-            return cont;
         }
     }
 }

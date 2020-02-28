@@ -21,7 +21,7 @@ public class QHeap1Test {
     private File expectedFile;
 
     public QHeap1Test(String name) {
-        String fileName = "static/files/QHeap1_%s_%s.txt";
+        String fileName = "static/files/QHeap1/%s_%s.txt";
         this.inputFileLocation = String.format(fileName, name, "input");
         this.outputFile = new File(String.format(fileName, name, "output"));
         this.expectedFile = new File(String.format(fileName, name, "expected"));
@@ -32,7 +32,8 @@ public class QHeap1Test {
         return Arrays.asList(new Object[][]{
                 {"Case1"},
                 {"Case2"},
-                {"Case3"}
+                {"Case3"},
+                {"Case4"}
         });
     }
 
