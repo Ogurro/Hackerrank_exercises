@@ -28,7 +28,7 @@ public class QHeap2Test {
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {"Case1"},
                 {"Case2"},

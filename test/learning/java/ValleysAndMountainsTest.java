@@ -23,7 +23,7 @@ public class ValleysAndMountainsTest {
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {8, "UDDDUDUU", 1},
                 {12, "DDUUDDUDUUUD", 2},

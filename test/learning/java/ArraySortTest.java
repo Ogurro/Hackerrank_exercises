@@ -20,7 +20,7 @@ public class ArraySortTest {
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {new int[]{7, 1, 3, 2, 4, 5, 6}, 5},
                 {new int[]{4, 3, 1, 2}, 3}

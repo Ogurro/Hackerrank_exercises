@@ -22,7 +22,7 @@ public class ArrayRotationTest {
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {new int[]{1, 2, 3, 4, 5}, 4, new int[]{5, 1, 2, 3, 4}},
                 {new int[]{1, 2, 3, 4, 5}, 5, new int[]{1, 2, 3, 4, 5}},

@@ -21,7 +21,7 @@ public class CloudGameTest {
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {new int[]{0, 0, 1, 0, 0, 1, 0}, 4},
                 {new int[]{0, 0, 0, 0, 1, 0}, 3},

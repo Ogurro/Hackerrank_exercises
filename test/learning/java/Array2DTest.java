@@ -21,7 +21,7 @@ public class Array2DTest {
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {new int[][]{
                         {1, 1, 1, 0, 0, 0},

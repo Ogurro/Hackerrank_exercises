@@ -23,7 +23,7 @@ public class RepeatedStringTest {
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {"aba", 10L, 7L},
                 {"a", 1000000000000L, 1000000000000L},

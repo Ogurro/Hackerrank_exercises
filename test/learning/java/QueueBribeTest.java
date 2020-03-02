@@ -20,7 +20,7 @@ public class QueueBribeTest {
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {new int[]{2, 1, 5, 3, 4}, 3},
                 {new int[]{2, 5, 1, 3, 4}, -1},

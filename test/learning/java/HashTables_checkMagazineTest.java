@@ -23,7 +23,7 @@ public class HashTables_checkMagazineTest {
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {new String[]{"give", "me", "one", "grand", "today", "night"}, new String[]{"give", "one", "grand", "today"}, true},
                 {new String[]{"two", "times", "three", "is", "not", "four"}, new String[]{"two", "times", "two", "is", "four"}, false},
