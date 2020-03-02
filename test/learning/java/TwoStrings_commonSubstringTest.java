@@ -10,20 +10,20 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class TwoStringsTest {
+public class TwoStrings_commonSubstringTest {
 
     private String s1;
     private String s2;
     private boolean expectedResult;
 
-    public TwoStringsTest(String s1, String s2, boolean expectedResult) {
+    public TwoStrings_commonSubstringTest(String s1, String s2, boolean expectedResult) {
         this.s1 = s1;
         this.s2 = s2;
         this.expectedResult = expectedResult;
     }
 
     @Parameterized.Parameters
-    public static Collection inputParameters() {
+    public static Iterable<Object[]> inputParameters() {
         return Arrays.asList(new Object[][]{
                 {"hello", "world", true},
                 {"hi", "world", false}
