@@ -5,7 +5,7 @@ import java.util.*;
 
 public class QHeap1 {
 
-    private static Integer currentMinValue = null;
+    private static MyTree minNode = null;
 
     public static void runMe(String fileLocation) throws IOException {
 
@@ -22,12 +22,21 @@ public class QHeap1 {
             int inputs = scan.nextInt();
 
             MyTree heap = new MyTree();
+            minNode = null;
 
             for (int i = 0; i < inputs; i++) {
                 int action = scan.nextInt();
                 if (action == 1) {
                     int val = scan.nextInt();
-                    heap.addNode(val);
+                    if (minNode == null && heap.getValue() == null) {
+                        heap.addNode(val);
+                    } else {
+                        if (minNode != null && val < minNode.getValue()) {
+                            minNode.addNode(val);
+                        } else {
+                            heap.addNode(val);
+                        }
+                    }
                 } else if (action == 2) {
                     int val = scan.nextInt();
                     heap.removeNode(val);
@@ -59,12 +68,12 @@ public class QHeap1 {
             if (this.value == null) {
                 this.value = value;
                 this.isActive = true;
-                currentMinValue = value;
+                minNode = this;
             } else if (value < this.value) {
                 if (this.leftNode == null) {
                     this.leftNode = new MyTree(value);
-                    if (currentMinValue != null) {
-                        currentMinValue = Math.min(currentMinValue, value);
+                    if (minNode != null) {
+                        minNode = (value < minNode.getValue()) ? this.leftNode : minNode;
                     }
                 } else {
                     this.leftNode.addNode(value);
@@ -86,22 +95,21 @@ public class QHeap1 {
             } else if (value > this.value) {
                 this.rightNode.removeNode(value);
             } else {
-                if (currentMinValue != null && currentMinValue.equals(this.value)) {
-                    currentMinValue = null;
-                }
                 this.isActive = false;
+                if (minNode != null && minNode.getValue() == value) {
+                    minNode = null;
+                }
             }
         }
 
         public boolean printMin(BufferedWriter outputFile) throws IOException {
-            if (currentMinValue == null) {
+            if (minNode == null) {
                 boolean cont = true;
                 if (this.leftNode != null) {
                     cont = this.leftNode.printMin(outputFile);
                 }
                 if (this.isActive && cont) {
-                    outputFile.write(this.value.toString());
-                    outputFile.newLine();
+                    outputFile.write(String.format("%d%n", this.value));
                     return false;
                 }
                 if (this.rightNode != null && cont) {
@@ -109,10 +117,13 @@ public class QHeap1 {
                 }
                 return cont;
             } else {
-                outputFile.write(currentMinValue.toString());
-                outputFile.newLine();
+                outputFile.write(String.format("%d%n", minNode.getValue()));
                 return false;
             }
+        }
+
+        public Integer getValue() {
+            return value;
         }
     }
 }
