@@ -1,7 +1,5 @@
 package learning.java;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -13,15 +11,17 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Scanner;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(Parameterized.class)
-public class QHeap1Test {
+public class QHeap2Test {
 
     private String inputFileLocation;
     private File outputFile;
     private File expectedFile;
 
-    public QHeap1Test(String name) {
-        String fileName = "static/files/QHeap1/%s_%s.txt";
+    public QHeap2Test(String name) {
+        String fileName = "static/files/QHeap2/%s_%s.txt";
         this.inputFileLocation = String.format(fileName, name, "input");
         this.outputFile = new File(String.format(fileName, name, "output"));
         this.expectedFile = new File(String.format(fileName, name, "expected"));
@@ -38,8 +38,8 @@ public class QHeap1Test {
     }
 
     @Test
-    public void QHeap1RunMeTest() throws IOException {
-        QHeap1.runMe(inputFileLocation);
+    public void QHeap2RunMeTest() throws IOException {
+        QHeap2.runMe(inputFileLocation);
 
         assertEquals(Files.lines(expectedFile.toPath()).count(), Files.lines(outputFile.toPath()).count());
 
